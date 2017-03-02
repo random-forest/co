@@ -1,6 +1,5 @@
-from app import cli_
+from cli import cli_
 
-# MAIN APP POINT
 def main(func):
   def wrapper():
     return cli_.loop()
