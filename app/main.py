@@ -1,16 +1,7 @@
-from cli import cli_
-
-def main(func):
-  def wrapper():
-    return cli_.loop()
-  return wrapper
-
-@main
-def cli():
-  pass
+from loop import loop
 
 def main():
-	cli()
+	loop()
 
 if __name__ == '__main__':
 	main()

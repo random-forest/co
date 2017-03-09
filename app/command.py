@@ -1,20 +1,31 @@
-from operator import *
-from option import option_
-from pprint import pprint
-from types import FunctionType
+from toolz.itertoolz import merge_sorted
+from utils import *
 
-class command_(object):
-  def __init__(self, name):
+POOL = []
+
+def command(name, help_='Default help message'):
+  class Wrapper(object):
+    def __init__(self, *args, **kwargs):
+      self.name = name
+      self.help = help_
+      self.options = []
+
+      self.__call__()
+
+    def __call__(self, *args, **kwargs):
+      POOL.pop()
+      setattr(self, 'options', list(merge_sorted(self.options, POOL)))
+
+      return vars(self)
+
+  return Wrapper
+
+class option(object):
+  def __init__(self, name, help_='Default help message'):
     self.name = name
-    self.options = []
+    self.help = help_
 
-  def __call__(self, fn, *args, **kwargs):
-    if eq(isinstance(fn, FunctionType), True):
-      if fn.__doc__ != None:
-        return fn.__doc__
-      else:
-        return fn
-    else:
-      self.options.append(fn)
+  def __call__(self, func):
+    POOL.append(vars(self))
 
-
+    return vars(self)
