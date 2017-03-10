@@ -1,16 +1,12 @@
-from app import *
-from funcy import *
-from operator import *
 from parser import *
 from utils import *
 
-def loop():
+def loop(state):
   while True:
     try:
       args = input(":> ").split(' ')
       cmd  = build_cmd(args)
-
-      echo(cmd)
+      echo(vars(state))
     except EOFError:
       quit()
     except KeyboardInterrupt:

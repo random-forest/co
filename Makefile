@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-PROJECT    := 'co'
+PROJECT    := 'ccc'
 LOCALPATH  := $(CURDIR)/
 ENV        := $(VIRTUAL_ENV)
 PYTHONPATH := $(ENV)/lib/python3.5

@@ -1,21 +1,27 @@
-from command import *
 from operator import *
 from utils import *
 
-@command('help', help_='Example message')
-@option(name='-l', help_='Option message')
-@option(name='-a')
-@option(name='-b')
-def help_():
-  """
-  ---------------- -------- Help --------------------------------
-  """
+def CCC():
+  class Wrapper(object):
+    def __init__(self, *args, **kwargs):
+      self.pool = []
+      self.commands = []
+      self.fns = []
+
+    def get_the(self, name):
+    	return getattr(self, name)
+
+    def add_to(self, name, value):
+    	return getattr(self, name).append(value)
+
+    def drop_the(self, name):
+    	return getattr(self, name).clear()
+
+  return Wrapper
+
+
+@CCC()
+def _():
   pass
 
-@command('build', help_='build [-es6, -jsx, -node] path')
-@option(name='-es6', help_='Option message')
-@option(name='-jsx')
-@option(name='-node')
-def build_(*argv, **kwargs):
-  pass
 
