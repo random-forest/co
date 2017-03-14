@@ -22,7 +22,7 @@ def command(name, help_='Default help message'):
   return Wrapper
 #----------------------------------------------------------------------------
 class option(object):
-  def __init__(self, name, help_='Default help message'):
+  def __init__(self, name, help_=None, *args, **kwargs):
     self.name = name
     self.help = help_
 

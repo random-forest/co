@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-PROJECT    := 'ccc'
+PROJECT    := 'co'
 LOCALPATH  := $(CURDIR)/
 ENV        := $(VIRTUAL_ENV)
 PYTHONPATH := $(ENV)/lib/python3.5
@@ -29,4 +29,5 @@ start:
 	python -d app/main.py || make quit && make clean
 
 clean:
+	rm -rf app/*.pyc
 	rm -rf app/__pycache__

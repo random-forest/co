@@ -6,7 +6,10 @@ def loop(state):
     try:
       args = input(":> ").split(' ')
       cmd  = build_cmd(args)
-      echo(vars(state))
+      rules = state.get_the('commands')
+
+      echo(rules)
+
     except EOFError:
       quit()
     except KeyboardInterrupt:

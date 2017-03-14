@@ -4,7 +4,8 @@ from loop import loop
 from utils import *
 #----------------------------------------------------------------------------
 @command('help', help_='Example message')
-def help_(*argv, **kwargs):
+def help_():
+  print('Help message')
   pass
 #----------------------------------------------------------------------------
 @command('build', help_='build [-es6, -jsx, -node] /a/b/c/')

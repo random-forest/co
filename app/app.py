@@ -1,7 +1,7 @@
 from operator import *
 from utils import *
-
-def CCC():
+#----------------------------------------------------------------------------
+def Co():
   class Wrapper(object):
     def __init__(self, *args, **kwargs):
       self.pool = []
@@ -18,9 +18,9 @@ def CCC():
     	return getattr(self, name).clear()
 
   return Wrapper
+#----------------------------------------------------------------------------
 
-
-@CCC()
+@Co()
 def _():
   pass
 
