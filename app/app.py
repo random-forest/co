@@ -1,10 +1,9 @@
-from operator import *
 from utils import *
-#----------------------------------------------------------------------------
-def Co():
+
+def co():
   class Wrapper(object):
     def __init__(self, *args, **kwargs):
-      self.pool = []
+      self.options = []
       self.commands = []
       self.fns = []
 
@@ -17,10 +16,10 @@ def Co():
     def drop_the(self, name):
     	return getattr(self, name).clear()
 
-  return Wrapper
-#----------------------------------------------------------------------------
 
-@Co()
+  return Wrapper
+
+@co()
 def _():
   pass
 

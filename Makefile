@@ -14,15 +14,12 @@ SYS_VIRTUALENV := virtualenv
 quit:
 	if [ "${$?}" = 1 ]; then exit 1; fi
 
-.DEFAULT: install build watch
+.DEFAULT: install build
 install:
 	pip install -r requirements.txt
 
 build:
 	python -O app/main.py
-
-watch:
-	inotifywait -m -e modify $(LOCALPATH)
 
 .PHONY: start clean
 start:
