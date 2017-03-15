@@ -1,24 +1,25 @@
-from app import _
+from co.proxy import co
+from co.utils import *
 from toolz.itertoolz import merge_sorted
-from utils import *
+
 #----------------------------------------------------------------------------
 class command(object):
-  def __init__(self, name, help_='Default help message', *args, **kwargs):
+  def __init__(self, name, help_='Default test message', *args, **kwargs):
     self.name = name
     self.help = help_
     self.options = []
 
   def __call__(self, func, *args, **kwargs):
-    if _.get_the('options') == []:
+    if co.get_the('options') == []:
       setattr(self, 'options', None)
     else:
-      setattr(self, 'options', list(merge_sorted(self.options, _.get_the('options'))))
+      setattr(self, 'options', list(merge_sorted(self.options, co.get_the('options'))))
 
     if is_Function(func):
-      _.add_to('fns', func)
+      co.add_to('fns', func)
 
-    _.add_to('commands', vars(self))
-    _.drop_the('options')
+    co.add_to('commands', vars(self))
+    co.drop_the('options')
 
     return vars(self)
 #----------------------------------------------------------------------------
@@ -29,6 +30,8 @@ class option(object):
 
   def __call__(self, func):
     if is_Function(func):
-      _.add_to('fns', func)
+      co.add_to('fns', func)
 
-    _.add_to('options', vars(self))
+    co.add_to('options', vars(self))
+
+# __package__ = 'command'

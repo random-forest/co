@@ -1,8 +1,6 @@
+from co.utils import *
 from funcy import *
-from operator import eq
-from operator import getitem
-from operator import ne
-from utils import *
+from operator import *
 
 def build_cmd(cmd):
   return {
@@ -11,7 +9,7 @@ def build_cmd(cmd):
     'path': cmd[2] if len(cmd) > 2 else None
   }
 
-def find_rule(a, b):
+def change_rule(a, b):
   length = len(b)
   current_name = getitem(a, 'name')
   current_options = getitem(a, 'options')
@@ -31,7 +29,7 @@ def find_rule(a, b):
         return a
       else:
         if ne(any(by_option, r_options), True):
-          if ne(current_options, None):
+          if ne(current_options, None) and ne(current_options, "--help"):
             print('Sorry! But, command "{0}" doesn"t have option named "{1}"!'.format(current_name, current_options))
 
           setitem(a, 'options', "--help")
@@ -42,7 +40,7 @@ def find_rule(a, b):
         else:
           continue
 
-def find_script(rule, root):
+def run_command(rule, root):
   fns = getattr(root, 'fns')
 
   if ne(rule, None):
@@ -58,6 +56,3 @@ def find_script(rule, root):
         return f(rule)
       else:
         continue
-
-def check_values(a, b):
-  return areidentical(a, b)

@@ -1,6 +1,6 @@
+from co.parser import *
+from co.utils import *
 from operator import *
-from parser import *
-from utils import *
 
 def loop(state):
   while True:

@@ -28,3 +28,4 @@ start:
 clean:
 	rm -rf app/*.pyc
 	rm -rf app/__pycache__
+	rm -rf app/co/__pycache__
