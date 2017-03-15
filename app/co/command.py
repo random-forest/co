@@ -18,6 +18,9 @@ class command(object):
     if is_Function(func):
       co.add_to('fns', func)
 
+      if func.__name__ == 'init_':
+        print(func.__doc__)
+
     co.add_to('commands', vars(self))
     co.drop_the('options')
 

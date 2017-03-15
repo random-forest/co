@@ -1,16 +1,23 @@
+"""
+Example usage -->
+
 from co.co import *
 
-@command('quit', help_="Safe exit from application")
-def quit_(*argv, **kwargs):
-  print("Have a nice trip! •ᴗ• ")
-  quit()
+@command('init') - "init" name called automatically an app startup
+def init(*argv):
+	--- Exaple help message ---
+	pass
 
-@command('help', help_='Example message')
-def help_(*argv, **kwargs):
-  print('------ Help message ------')
+@command('build', help_="build [ -opt1, -opt2, -opt3, --help ] /path") - custom command
+@option(name='-opt1')
+@option(name='-opt2')
+@option(name='-opt3')
+def build_(*argv):
+	 name = argv[0]
+	 options = argv[0][1]
+	 path = argv[0][2]
 
-def main():
-	loop()
+	 call('path/to/{0}.sh {1} {2}'.format(name, options, path), shell=True)
+"""
 
-if __name__ == '__main__':
-	main()
+print(__doc__)

@@ -9,6 +9,8 @@ def loop():
       cmd = build_cmd(input(":> ").split(' '))
       rule = change_rule(cmd, co.get_the('commands'))
       src = run_command(rule, co)
+
+
     except (EOFError, KeyboardInterrupt):
       quit()
 
